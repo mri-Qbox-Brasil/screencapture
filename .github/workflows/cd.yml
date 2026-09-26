@@ -8,6 +8,8 @@ on:
   push:
     tags:
       - 'v*.*.*'
+  # Fork: push de tag nem sempre dispara aqui; rodar com --ref <tag>.
+  workflow_dispatch:
 
 jobs:
   create-release:
