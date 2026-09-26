@@ -58,18 +58,6 @@ jobs:
         env:
           CI: false
 
-      - name: Publish npm packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "NPM_TOKEN secret is required to publish npm packages."
-            exit 1
-          fi
-
-          pnpm --filter @screencapture/gameview publish --access public --provenance --no-git-checks
-          pnpm --filter @screencapture/live publish --access public --provenance --no-git-checks
-
       - name: Bump manifest version
         run: node .github/actions/bump-manifest-version.js
         env:
@@ -95,6 +83,7 @@ jobs:
           mkdir -p ./temp/screencapture/game/nui
           cp ./{README.md,LICENSE,fxmanifest.lua} ./temp/screencapture
           cp -r ./game/dist ./temp/screencapture/game/dist
+          cp ./game/client.lua ./temp/screencapture/game/client.lua
           cp -r ./game/nui/dist ./temp/screencapture/game/nui/dist
           cd ./temp && zip -r ../screencapture.zip ./screencapture
 

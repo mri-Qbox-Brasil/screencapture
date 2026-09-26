@@ -58,6 +58,7 @@ jobs:
           mkdir -p ./temp/screencapture/game/nui
           cp ./{README.md,LICENSE,fxmanifest.lua} ./temp/screencapture
           cp -r ./game/dist ./temp/screencapture/game/dist
+          cp ./game/client.lua ./temp/screencapture/game/client.lua
           cp -r ./game/nui/dist ./temp/screencapture/game/nui/dist
           cd ./temp && zip -r ../screencapture.zip ./screencapture
 

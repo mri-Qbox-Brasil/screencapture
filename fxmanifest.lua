@@ -6,7 +6,10 @@ game "gta5"
 
 node_version '22'
 
-client_script "game/dist/client.js"
+lua54 'yes'
+
+-- client em Lua (fork MRI): ver game/client.lua
+client_script "game/client.lua"
 server_script "game/dist/server.js"
 
 ui_page "game/nui/dist/index.html"
